@@ -37,7 +37,7 @@ The analysis query were performed, and cascaded. There were nine main “questio
 
 ![Query3](./EmployeeSQL/Images/Query3.PNG) </br>
 
-4. List the departments of every employee along with their full name and employee number. The information I needed was stored on two tables, employees and departments. However, the tables did not share any primary/foreign keys. Therefore, used a third table (dept_emp) to join the other two together. First joined employees to dept_emp on the shared emp_no, and then dept_emp to departments on the shared dept_no. Through these joins, displayed the department name of each employee along with their name and employee number. </br>
+4. List the departments of every employee along with their full name and employee number. The information needed was stored in two tables, employees and departments. However, the tables did not share any primary/foreign keys. Therefore, used a third table (dept_emp) to join the other two together. First joined employees to dept_emp on the shared emp_no, and then dept_emp to departments on the shared dept_no. Through these joins, displayed the department name of each employee along with their name and employee number. </br>
 
 ![Query4](./EmployeeSQL/Images/Query4.PNG) </br>
 
@@ -45,11 +45,11 @@ The analysis query were performed, and cascaded. There were nine main “questio
 
 ![Query5](./EmployeeSQL/Images/Query5.PNG) </br>
 
-6. List information only for employees in the Sales department. Instead of repeating the fourth query, I created a view of it, named emp_info, and queried that, setting the condition of the department name being “Sales”. </br>
+6. List information only for employees in the Sales department. Instead of repeating the fourth query, created a view of it, named emp_dept_info, and queried the view, with the condition on the department name being “Sales”. </br>
 
 ![Query6](./EmployeeSQL/Images/Query6.PNG) </br>
 
-7. Used the same query as in the sixth, and add the condition to look into Development department as well, used a subquery to search for the department name being “Sales” or “Development”. </br>
+7. Used the same query as in the sixth, and add the condition to look into "Development" department as well. </br>
 
 ![Query7](./EmployeeSQL/Images/Query7.PNG) </br>
 

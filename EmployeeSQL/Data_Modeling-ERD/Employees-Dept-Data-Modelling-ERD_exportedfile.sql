@@ -1,7 +1,10 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- Link to schema: https://app.quickdatabasediagrams.com/#/d/QwFui8
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
+﻿-- Data Engineering
+DROP TABLE IF EXISTS departments CASCADE;
+DROP TABLE IF EXISTS employees CASCADE;
+DROP TABLE IF EXISTS dept_emp CASCADE;
+DROP TABLE IF EXISTS dept_manager CASCADE;
+DROP TABLE IF EXISTS salaries CASCADE;
+DROP TABLE IF EXISTS titles CASCADE;
 
 CREATE TABLE "departments" (
     -- Department number is a primary key, and it is
@@ -92,4 +95,12 @@ REFERENCES "departments" ("dept_no");
 
 ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
+
+-- Viewing the tables 
+SELECT * FROM departments;
+SELECT * FROM titles;	
+SELECT * FROM employees;	
+SELECT * FROM dept_emp;
+SELECT * FROM dept_manager;	
+SELECT * FROM salaries;
 

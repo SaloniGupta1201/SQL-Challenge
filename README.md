@@ -25,15 +25,15 @@ Click the following link to see the actual schema file [Employees-Dept-Data-Mode
 After completing the importing process, a Postgresql analysis was perfomed and you can find the full query in this file [Employee-Dept-Query.sql](./EmployeeSQL/Data_Analysis/Employee-Dept-Query.sql) </br>
 The analysis query were performed, and cascaded. There were nine main “questions” to answer, the first eight being done through PostgreSQL. </br>
 
-1. Find the employee number, last name, first name, gender, and salary of every employee. The information needed was available in two tables, employees and   salaries, selected the appropriate columns and then joined those tables with an inner join on emp_no, which both tables had. </br>
+1. Find the employee number, last name, first name, gender, and salary of every employee. The information needed was available in two tables, employees and salaries, selected the appropriate columns and then joined those tables with an inner join on emp_no. </br>
  
 ![Query1](./EmployeeSQL/Images/Query1.PNG) </br>
 
-2. List all employees who were hired in 1986. Selected the first_name, last_name, and hire_date columns from the employees table and then used the WHERE     clause to set the date of hire condition. </br>
+2. List all employees who were hired in 1986. Selected the first_name, last_name, and hire_date columns from the employees table and then used the WHERE clause to set the date of hire condition. </br>
  
 ![Query2](./EmployeeSQL/Images/Query2.PNG) </br>
 
-3. Looked into managers, listing the department number and name, and the managers’ name, employee number, and employment dates. The relevant information was stored in four separate tables this time, which required three inner joins. As before, selected the relevant columns and then joined the dept_manager table with the employees table, and the employees table with the dept_emp table, both on emp_no. I joined the dept_emp table with the departments table on dept_no. </br>
+3. Looked into managers, listing the department number and name, and the managers’ name, employee number, and employment dates. The relevant information was stored in three separate tables this time, which required two inner joins. As before, selected the relevant columns and then joined the dept_manager table with the departments table on dept_no., and further with employees table on emp_no. </br>
 
 ![Query3](./EmployeeSQL/Images/Query3.PNG) </br>
 
@@ -60,15 +60,8 @@ The analysis query were performed, and cascaded. There were nine main “questio
 ## 4. Data Testing and Validation (Python)
 In order to test, and validate the dataset, a python code is created on jupyter notebook by using SQL Alchemy to import the database into Pandas. The code generated a visualization of the data, wich proved the reliablity of the database. In order to import the SQL database in to Pandas without importing the CSV, but just by sourcing from SQL database use the following code.Input your postgresql username and password in the config.py file, and make sure your pgAdmin host, port, and database adjusted correctly.To look the python code vsit the following jupyter viewer page.
 
-Dependencies
-from sqlalchemy import create_engine </br>
-from config import username, password </br>
-import pandas as pd </br>
-import matplotlib.pyplot as plt </br>
-import numpy as n </br>
+![Dependencies](./EmployeeSQL/Images/Dependencies.PNG) </br>
 
-engine = create_engine(f'postgresql://{username}:{password}@localhost:5432/Employees_db') </br>
-connection = engine.connect() </br>
 Consult [SQLAlchemy documentation](https://docs.sqlalchemy.org/en/14/core/engines.html#postgresql) for more information. </br>
 
 After connecting to the database and creating an engine, imported emp_no and salary from the salaries table and emp_no and title from the titles table. Performed an inner join on the two tables on the shared emp_no before grouping the data by title.Took the mean of the salaries per title and rounded by two decimal points. Finally, plot the data in a bar chart to find that there was not much variance in salary amounts between each employee title. </br>

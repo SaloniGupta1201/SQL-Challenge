@@ -23,6 +23,9 @@ ON  b.emp_no= c.emp_no
 
 --4. List the department of each employee with the following information:
 --employee number, last name, first name, and department name.
+
+--Created view to use for queries 6th & 7th
+CREATE VIEW emp_dept_info AS 
 SELECT a.emp_no, b.last_name, b.first_name, c.dept_name
 FROM dept_emp a
 JOIN employees b
@@ -38,28 +41,19 @@ WHERE first_name= 'Hercules' and last_name LIKE 'B%';
 
 --6. List all employees in the Sales department,
 --including their employee number, last name, first name, and department name.
-SELECT a.emp_no, b.last_name, b.first_name, c.dept_name
-FROM dept_emp a
-JOIN employees b
-ON a.emp_no = b.emp_no
-JOIN departments c
-ON a.dept_no = c.dept_no
-WHERE c.dept_name = 'Sales';
+SELECT emp_no, last_name, first_name, dept_name
+FROM emp_dept_info
+WHERE dept_name = 'Sales';
 
 --7. List all employees in the Sales and Development departments,
 --including their employee number, last name, first name, and department name.
-SELECT a.emp_no, b.last_name, b.first_name, c.dept_name
-FROM dept_emp a
-JOIN employees b
-ON a.emp_no = b.emp_no
-JOIN departments c
-ON a.dept_no = c.dept_no
-WHERE c.dept_name = 'Sales' 
-OR c.dept_name = 'Development' ;
+SELECT emp_no, last_name, first_name, dept_name
+FROM emp_dept_info
+WHERE dept_name IN ('Sales', 'Development');
 
 --8. In descending order, list the frequency count of employee last names,
 --i.e., how many employees share each last name.
 Select last_name,count(last_name) as "frequency"
 FROM employees
 GROUP BY last_name 
-ORDER BY "frequency" DESC ;
+ORDER BY frequency DESC ;
